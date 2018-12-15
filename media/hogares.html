@@ -1,0 +1,74 @@
+<script src="Chart.js"></script>
+<div id="canvas-holder">
+<canvas id="chart-area2" width="300" height="300"></canvas>
+</div>
+<script>
+var pieData = [
+                {value: 190.285,
+                 color:"#0b82e7",
+                 highlight: "#0c62ab",
+                 label: "Santiago"
+                },
+    
+				{
+					value: 172.517,
+					color: "#e3e860",
+					highlight: "#a9ad47",
+					label: "Puente Alto"
+				},
+				{
+					value: 159.656,
+					color: "#eb5d82",
+					highlight: "#b74865",
+					label: "Maipú"
+				},
+				{
+					value: 118.258,
+					color: "#5ae85a",
+					highlight: "#42a642",
+					label: "La Florida"
+				},
+				{
+					value: 117.668,
+					color: "#e965db",
+					highlight: "#a6429b",
+					label: "Las Condes"
+				},{
+					value: 91.735,
+					color: "#e3e860",
+					highlight: "#a9ad47",
+					label: "Ñuñoa"
+				},
+				{
+					value: 89.478,
+					color: "#eb5d82",
+					highlight: "#b74865",
+					label: "San Bernardo"
+				},
+				{
+					value: 70.788,
+					color: "#5ae85a",
+					highlight: "#42a642",
+					label: "Providencia"
+				},{
+					value: 67.058,
+					color: "#e3e860",
+					highlight: "#a9ad47",
+					label: "Pudahuel"
+				},
+				{
+					value: 65.962,
+					color: "#eb5d82",
+					highlight: "#b74865",
+					label: "Peñalolén"
+				}
+    
+			];
+
+
+var ctx2 = document.getElementById("chart-area2").getContext("2d");
+
+window.myPie = new Chart(ctx2).Doughnut(pieData);				
+
+</script>
+

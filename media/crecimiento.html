@@ -1,0 +1,33 @@
+<script src="Chart.js"></script>
+<div id="canvas-holder">
+<canvas id="chart-area3" width="600" height="300"></canvas>
+</div>
+<script>
+
+
+	var barChartData = {
+		labels : ["Maipú","Puente Alto","Quilicura","Pudahuel","San Bernardo"],
+		datasets : [
+			{
+				fillColor : "#6b9dfa",
+				strokeColor : "#ffffff",
+				highlightFill: "#1864f2",
+				highlightStroke: "#ffffff",
+				data : [537.944,545.260,144.559,212.684,263.676]
+			},
+			{
+				fillColor : "#e9e225",
+				strokeColor : "#ffffff",
+				highlightFill : "#ee7f49",
+				highlightStroke : "#ffffff",
+				data : [1249.498,930.435,293.450,315.513,342.445]
+			}
+		]
+
+	}	
+		
+var ctx3 = document.getElementById("chart-area3").getContext("2d");
+		
+window.myPie = new Chart(ctx3).Bar(barChartData, {responsive:true});
+
+</script>

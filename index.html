@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Subcentros Alternativos SCL</title>
+
+    <!--
+    color aquí 
+    los metadatos 
+    que puedan generar 
+    con https://megatags.co/
+    -->
+
+    <!-- Vamos a buscar el CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!--Vamos a buscar el CSS de Font Awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Vamos por nuestro CSS, basado en https://startbootstrap.com/template-overviews/grayscale/ -->
+    <link href="style.css" rel="stylesheet">
+    <!-- Aquí vamos por el estilo y script del mapa-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+</head>
+
+<body id="page-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top"><span class=""> </span>Subcentros alternativos</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">Sobre los Subcentros Urbanos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#dataviz">Visualizaciones</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Este encabezado viene de https://startbootstrap.com/snippets/video-header/ -->
+    <header>
+        <div class="overlay"></div>
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <!--Favor revisar https://www.w3schools.com/html/html5_video.asp-->
+            <source src="https://ak8.picdn.net/shutterstock/videos/32222068/preview/stock-footage-commuters-walking-anonymous-crowd-on-a-busy-street-people-walk-down-a-busy-street-with-green.webm" type="video/mp4">
+        </video>
+        <div class="container h-100">
+            <div class="d-flex text-center h-100">
+                <div class="my-auto w-100 text-white">
+                    <h1 class="display-3"> 11 Subcentros alternativos para fortalecer en Santiago </h1>
+                    <h3>"En la perspectiva de la sustentabilidad urbana, es absolutamente necesario construir nuevos centros y subcentros para acercar servicios y equipamientos de calidad a los barrios que lo requieran y mantener los límites urbanos, para no continuar con la dispersión urbana"</h3>
+                    <h5>Natalia Escudero, Académica de la Facultad de Arquitectura y Urbanismo de la U. de Chile; 2018</h5>
+                    <p class="pt-3"><a href="#about"><i class="fas fa-3x fa-arrow-alt-circle-down"></i></i></a></p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- About Section -->
+    <section id="about" class="about-section text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="text-white mb-4">Subcentros Urbanos</h2>
+                    <p class="text-white-50">Un subcentro es un punto en el espacio metropolitano caracterizado no solo por tener un densidad de
+trabajadores sensiblemente superior a la de sus vecinos, sino y sobre todo, por ser capaz de ejercer un
+una influencia sobre su entorno. Dicha influencia puede verse reflejada mediante el flujo de trabajadores o
+compradores que acuden a él desde sus residencias, o por una modificación del manto de valores y de
+intensidad de uso del territorio alrededor de él. Un subcentro también debería ser un punto de referencia
+en el territorio con una fuerza identitaria tal capaz de ser reconocible por su vecindario. 
+                </div>
+            </div>
+            <img src="media/centro.png" class="img-fluid" alt="">
+        </div>
+    </section>
+
+    <!-- dataviz Section -->
+    <section id="dataviz" class="dataviz-section bg-light">
+        <div class="container">
+
+            <!-- MAPA -->
+            <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+                <div class="col-xl-8 col-lg-7">
+                    <div id="leaflet"></div>
+                </div>
+                <div class="col-xl-4 col-lg-5">
+                    <div class="featured-text text-center text-lg-left">
+                        <h4>Subcentros Urbanos Alternativos</h4>
+                        <p class="text-black-50 mb-0">Ubicación geográfica de los 11 subcentros urbanos en desarrollo de la Región Metropolitana:</p>
+                        <p> </p>
+                        <div class="container">
+                        <p class="text-black-50 mb-0">Paradero 14 de Vicuña MAckenna </p>                  
+                        <p class="text-black-50 mb-0"> Plaza Oeste</p>
+                        <p class="text-black-50 mb-0">Ciudad Empresarial</p>
+                        <p class="text-black-50 mb-0">Franklin-BioBio</p>
+                        <p class="text-black-50 mb-0">Cono Industrial Quilicura</p><p class="text-black-50 mb-0">Centro Maipú </p><p class="text-black-50 mb-0">Centro Puente Alto</p><p class="text-black-50 mb-0">Centro Lo Barnechea </p><p class="text-black-50 mb-0">ENEA-Aeropuerto </p><p class="text-black-50 mb-0">Intermodal La Cisterna</p><p class="text-black-50 mb-0">Estoril</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRIMER GRÁFICO -->
+            <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+                <div class="col-lg-6">
+                    <svg id="chart-1" src="media/hogares.html"></svg>
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-black text-center h-100 project">
+                        <div class="d-flex h-100">
+                            <div class="project-text w-100 my-auto text-center text-lg-left">
+                                <h4 class="text-white">Comunas de la Región Metropolitana con mayor concentración de viviendas  </h4>
+                                <p class="mb-0 text-white-50">La concentración de viviendas se presenta mayoritariamente en las comunas de Santiago, Puente Alto, Maipú, La Florida y Las Condes, que en conjunto albergan el 32,5%   del total regional.</p>
+                                <hr class="d-none d-lg-block mb-0 ml-0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEGUNDO GRÁFICO -->
+            <div class="row justify-content-center no-gutters">
+                <div class="col-lg-6">
+                    <svg id="chart-2"></svg>
+                </div>
+                <div class="col-lg-6 order-lg-first">
+                    <div class="bg-black text-center h-100 project">
+                        <div class="d-flex h-100">
+                            <div class="project-text w-100 my-auto text-center text-lg-right">
+                                <h4 class="text-white">Comunas que liderarán crecimiento poblacional del Gran Santiago</h4>
+                                <p class="mb-0 text-white-50"> Según las proyecciones efectuadas por la secretaría regional ministerial de Vivienda con datos aportados por el Instituto Nacional de Estadísticas (INE), la Región Metropolitana tendrá 7.421.598 habitantes en 2020, más de 1.168.676 de los registrados en el censo de 2002.</p>.
+                                <p class="mb-0 text-white-50">La comuna de Maipú será la que tendrá la mayor población (1.249.498 personas), lo que significa 711.554 habitantes más que en 2002. De esa forma desplazará a Puente Alto como la comuna más poblada.</p> .                                
+                                <p class="mb-0 text-white-50">Las proyecciones de población ayudan a identificar los nuevos centros urbanos y potenciar los lugares donde se prevé que habrá una mayor concentración de habitantes, para generar instrumentos que permitan mejorar las condiciones, entre ellas, la conectividad.</p>
+                                <hr class="d-none d-lg-block mb-0 mr-0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black small text-center text-white-50">
+        <div class="container">
+            <p><span class="titular"></span> desarrollado por Javiera Castro para Multimedia II</p>
+            <p>Segundo semestre, 2018 · Diseño Gráfico</p>
+            <p>Universidad de Chile</p>
+            
+            <div class="container">
+      Fuentes: <a href="https://www.emol.com/noticias/Nacional/2018/06/18/909866/Los-13-subcentros-alternativos-que-podrian-fortalecerse-con-las-nuevas-lineas-de-Metro.html">EMOL</a> - <a href="http://www.censo2017.cl/wp-content/uploads/2016/12/pc2016_region-comuna-13122016.pdf">CENSO2017</a> - <a href="http://sitio.cartografia.cl/comunas-maipu-puente-alto-y-quilicura-lideraran-crecimiento-poblacional-de-santiago-chile">Cartografía.cl</a>
+      </div>
+            
+            <p><a href="#page-top"><i class="fas fa-arrow-alt-circle-up"></i></a></p>
+        </div>
+    </footer>
+
+    <!-- Vamos a buscar algo de JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!--ahora aprovechamos que Bootstrap necesita jQuery, para manipular el DOM-->
+    <script>
+        (function($) {
+            "use strict"; // Start of use strict
+
+            $(".titular").text("Proyecto");
+        })(jQuery); // End of use strict
+    </script>
+
+    <!--el tema de bootstrap que usamos necesita este script para funcionar-->
+    <script src="js/theme.js"></script>
+
+    <!--acá comienzan las visualizaciones-->
+
+    <!--primero el mapa-->
+
+    <script>
+        
+        var centros = [
+				{
+					nombre:"Paradero 14",
+					lat: -33.519823026939754,
+					lon: -70.59958558778781
+                },{
+					nombre:"Plaza Oeste",
+					lat: -33.516551 ,
+					lon: -70.713403
+                },{
+					nombre:"Ciudad Empresarial",
+					lat: -33.3868342,
+					lon: -70.6187806
+                },{
+					nombre:"Franklin-BioBio",
+					lat: -33.4725124,
+					lon: -70.6484627
+                },{
+					nombre:"Cono Industrial Quilicura",
+					lat: -33.3339804,
+					lon: -70.7138779
+                },{
+					nombre:"Centro Maipù",
+					lat: -33.5106492,
+					lon: -70.7583993
+                },{
+					nombre:"Centro Puente Alto",
+					lat: -33.609078,
+					lon: -70.5746446
+                },{
+					nombre:"Centro Lo Barnechea",
+					lat: -33.3527486,
+					lon: -70.518577
+                },{
+					nombre:"Pajaritos-Vespucio",
+					lat: -33.457399,
+					lon: 70.7181531
+                },{
+					nombre:"ENEA-Aeropuerto",
+					lat: -33.4288088,
+					lon: -70.7837549
+                },{
+					nombre:"Intermodal La Cisterna",
+					lat: -33.537960,
+					lon: -70.66595
+                },{
+					nombre:"Estoril",
+					lat: -33.3845496,
+					lon: -70.53310
+                }
+            ]
+        
+        var mymap = L.map('leaflet').setView([-33.463453,-70.655543], 10);
+
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            maxZoom: 18,
+            id: 'mapbox.light'
+        }).addTo(mymap);
+
+        var lon, lat, p, circle;  
+                for (var x = 0; x < centros.length ; x++ ){
+					lon = centros[x].lon;
+					lat = centros[x].lat;
+					p = centros[x].numero;				
+					circle = L.circle([lat, lon], {
+					    fillColor: '#33FF',
+					    fillOpacity: 0.25,
+					    weight:0,
+					    radius : 500
+					}).addTo(mymap);    
+                    
+				}
+        
+        
+    </script>
+
+    <!--luego voy a buscar una biblioteca que Data Driven Documents (DDD = d3)-->
+
+    <script src="https://d3js.org/d3.v5.min.js"> </script>
+    <script src="Chart.js"></script>
+
+
+    <!--esto es para un gráfico -->
+
+    
+    <script>
+        d3.select("#chart-1").attr("width", "100%").attr("height", "400").style("background", "red");
+    
+        
+   </script>
+
+    <!--esto es para otro gráfico -->
+
+    <script>
+        d3.select("#chart-2").attr("width", "100%").attr("height", "400").style("background", "blue");
+        
+        
+    </script>
+
+</body>
+
+</html>
